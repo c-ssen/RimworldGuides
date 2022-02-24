@@ -1,0 +1,91 @@
+<head>
+    <link rel="stylesheet" href="../../css/text-styles.css">
+    <link rel="stylesheet" href="../../css/overrides.css">
+    <link rel="stylesheet" href="../../css/layouts.css">
+</head>
+
+<body>
+    <div class="bold pgt ibox">RecipeDefs - Custom Crafting Bills</div>
+
+    <div class="box">
+        <div class="bold subt">Overview</div>
+    </div>
+    <div class="tx ibox">
+        There are multiple different ways you can add crafting bills to the game. This guide is intended to overview some of these methods, as well as the particular situations that make them useful. 
+    </div><br><br>
+
+    <div class="box">
+        <div class="bold subt">RecipeDefs</div>
+    </div>
+    <div class="tx ibox">
+        RecipeDefs are defs that describe crafting recipes that can appear as bills in-game. Although RecipeDefs exist explicitly for defining crafting recipes, it is also possible to define a crafting recipe for a specific ThingDef without defining an explicit RecipeDef for it. See <a href="#internal-recipes">Internal Recipes</a> for more on that option.
+    </div><br><br>
+
+    <div class="box">
+        <a id="internal-recipes"><div class="bold subt">Internal Recipes</div></a>
+    </div>
+    <div class="tx ibox">
+        
+    </div><br><br>
+
+    <div class="box">
+        <div class="bold subt">ThingDef Specification - Items</div>
+    </div>
+    <div class="tx ibox">
+        This section refers to the specification that <em>all</em> bills for a given ThingDef will appear in the same production building(s). I would recommend against using this method when defining new RecipeDefs for the production of ThingDefs that are already in the game (this would require an XML patch anyway). This option is best if you have multiple RecipeDefs for the same custom ThingDef that you would like to have appear within the same production building. 
+        <br><br>
+        You can specify which production buildings the recipes for a ThingDef should appear in by adding the <div class="code">&ltrecipeUsers&gt</div> node to your <div class="code">&ltThingDef&gt</div> XML. See below for an example that adds the RecipeDefs for a ThingDef to both vanilla tailoring benches.
+        <br><br>
+        <div class="code-block">
+            &ltThingDef&gt <br>
+            &nbsp;... <br>
+            &nbsp;&ltrecipeUsers&gt <br>
+            &nbsp;&nbsp;&ltli&gtElectricTailoringBench&lt/li&gt <br>
+            &nbsp;&nbsp;&ltli&gtHandTailoringBench&lt/li&gt <br>
+            &nbsp;&lt/recipeUsers&gt <br>
+            &nbsp;... <br>
+            &lt/ThingDef&gt
+        </div>
+    </div><br><br>
+
+    <div class="box">
+        <div class="bold subt">RecipeDef Specification</div>
+    </div>
+    <div class="tx ibox">
+        This section refers to the specification that a given RecipeDef will appear in a set of specific production buildings. This is a better option for custom RecipeDefs that produce vanilla ThingDefs.
+        <br><br>
+        The XML structure for this option is practically identical to the previous option, but only attaches one RecipeDef at a time to each specified production building ThingDef. See below for an example that adds a custom RecipeDef bill to both vanilla tailoring benches.
+        <br><br>
+
+        <div class="code-block">
+            &ltRecipeDef&gt <br>
+            &nbsp;... <br>
+            &nbsp;&ltrecipeUsers&gt <br>
+            &nbsp;&nbsp;&ltli&gtElectricTailoringBench&lt/li&gt <br>
+            &nbsp;&nbsp;&ltli&gtHandTailoringBench&lt/li&gt <br>
+            &nbsp;&lt/recipeUsers&gt <br>
+            &nbsp;... <br>
+            &lt/RecipeDef&gt
+        </div>
+    </div><br><br>
+
+    <div class="box">
+        <div class="bold subt">ThingDef Specification - Production Buildings</div>
+    </div>
+    <div class="tx ibox">
+        This section refers to the specification that a specific production building ThingDef should include specific RecipeDefs in its list of bills. This is a useful option if you have defined a custom production building that should inherit specific bills that already exist in the game. A good example of this would be a higher tier tailoring bench, but it may be a better idea to use an XML patch in that particular case (patching into the ApparelMakeableBase to add your custom recipeUser). Either way, this option lets you specify which bills belong to a production building from within the definition of that building. 
+        <br><br>
+        You can specify which RecipeDefs should appear in the bills menu for a production building ThingDef by adding the <div class="code">&ltrecipes&gt</div> node to your <div class="code">&ltThingDef&gt</div> XML. See below for an example that adds the two vanilla component bills to some production building ThingDef.
+        <br><br>
+        <div class="code-block">
+            &ltThingDef ParentName="BuildingBase"&gt <br>
+            &nbsp;... <br>
+            &nbsp;&ltrecipes&gt <br>
+            &nbsp;&nbsp;&ltli&gtMake_ComponentIndustrial&lt/li&gt <br>
+            &nbsp;&nbsp;&ltli&gtMake_ComponentSpacer&lt/li&gt <br>
+            &nbsp;&lt/recipes&gt <br>
+            &nbsp;... <br>
+            &lt/ThingDef&gt
+        </div>
+    </div><br><br>
+</body>
