@@ -1,5 +1,7 @@
 # RimworldModdingGuides
 
+This is a repository of text-based guides that accompany my Rimworld Modding video guides: https://youtube.com/playlist?list=PLULYbI-rKYMOIArkH2fRhWEnbpwtA--GS
+
 # Installation
 
 1. Download this repository code as a ZIP archive (green code button)
