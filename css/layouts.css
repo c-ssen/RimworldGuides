@@ -1,0 +1,34 @@
+.ew {
+    width: auto;
+}
+
+.box {
+    border: 1px solid black;
+    margin: 16px;
+    padding: 8px;
+}
+
+.ibox {
+    border: 1px solid transparent;
+    margin: 16px;
+    padding: 8px;
+}
+
+.fxhz {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.fxhz > div {
+    flex: 0 0 45%;
+}
+
+.fxhz > div > img {
+    width: 100%;
+}
+
+.video {
+    width: 60vw;
+    height: 33.75vw;
+}

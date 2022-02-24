@@ -1,0 +1,107 @@
+<head>
+    <link rel="stylesheet" href="../../css/text-styles.css">
+    <link rel="stylesheet" href="../../css/overrides.css">
+    <link rel="stylesheet" href="../../css/layouts.css">
+</head>
+
+<body>
+    <div class="bold pgt ibox">C# Environment Setup</div>
+
+    <div class="box">
+        <div class="bold subt">About</div>
+    </div>
+    <div class="tx ibox">
+        This section details the steps required to set up an environment for developing a mod that will use custom C# code. If you intend only to add simple Defs, see [PAGE TODO] for instructions for an XML only mod. With that said, this process will also produce the correct hierarchy for pure XML modding as well. <br><br>
+        A minimally fundamental understanding of the C# language and syntax are strongly recommended for nontrivial projects. However, it is possible to get started regardless of how much you understand. All it really takes is time and practice. <br><br>
+        The specific setup processes included in this guide are targeted towards developers with windows systems. <br><br>
+        The instructions that follow are roughly the same as those described in this video:
+    </div>
+
+    <iframe class="video" src="https://www.youtube.com/embed/dQf3P-hIlFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br><br>
+
+    <div class="box">
+        <div class="bold subt">Prerequisites</div>
+    </div>
+    <div class="tx ibox">
+        <b>Git</b> is a version control tool. Familiarity with the specifics of git is not necessarily required to develop mods for Rimworld, but it must be installed for later parts of the setup to work. Version control is a great way to keep your work safe, so I definitely recommend that you use it for your projects if you don't already. <br><br>
+        You can download git <a href="https://git-scm.com/download/win">here</a>. Simply run the installer and you should be all set. 
+        <br><br>
+        <b>Python</b> is a programming language. Don't worry, you don't need to learn it. In the same sense as git, you just need to have python installed for the rest of this process to work. I recommend that you download a version of python later than <b>3.4</b> since these later versions come with <b>pip</b> preinstalled. Pip is a useful package management system that makes it much easier to install new python packages - this will be important in a bit. 
+        <br><br>
+        You can download python <a href="https://www.python.org/downloads/release/python-3910/">here</a>. Verify that pip is installed as well by typing <div class="code">pip help</div> into a command prompt.
+        <br><br>
+        <b>Cookiecutter</b> is a command-line tool for creating projects from predefined templates. It makes setting up new Rimworld mod projects <em>very</em> simple.
+        <br><br>
+        You can install cookiecutter by typing <div class="code">pip install cookiecutter</div> into a command prompt as long as git, python, and pip are installed correctly.
+    </div><br>
+
+    <div class="box">
+        <div class="bold subt">Visual Studio</div>
+    </div>
+    <div class="tx ibox">
+        <b>Microsoft Visual Studio</b> is a fully-featured IDE that can be used for a larger variety of projects than just C#. 
+        <br><br>
+        First, go ahead and download the Visual Studio installer <a href="https://visualstudio.microsoft.com/downloads/">here</a>. There should be a button conveniently labeled <b>'Download Visual Studio'</b> that will allow you to download the free community edition. This guide is based on the 2022 version. 
+        <br><br>
+        Once the installer is downloaded, run it. If you've used visual studio before for different projects, you'll need to click a button labeled <b>'Modify'</b> to modify your installation. Otherwise, you should see a list of workloads to select from. 
+        <br><br>
+        There are a couple of specific workloads that are required for this particular setup. <br><br>
+        <div class="fxhz">
+            <div><img src="../../resources/images/python-workload.png" alt="The Python Development Workload"></div>
+            <div><img src="../../resources/images/data-science-workload.png" alt="The Data Science and Analytical Applications Workload"></div>
+        </div>
+        <br>
+        These two workloads ensure that the Visual Studio install includes options that are necessary later on. It may also be worth adding the <b>.NET Desktop Development Workload</b> as well. Truthfully, I'm not exactly sure if all of these are strictly required, but I have all three and that works. 
+        <br><br>
+        Now you can go ahead and click the <b>'Install'</b> or <b>'Modify'</b> button in the bottom right corner of the installer window. This will take longer if it's your first install since Visual Studio takes up a few gigabytes of storage on its own.
+        <br><br>
+        At this point, we're done with installations. Next up is the project configuration.
+    </div><br>
+
+    <div class="box">
+        <div class="bold subt">New Project Setup</div>
+    </div>
+    <div class="tx ibox">
+        This is the easy part. With Visual Studio open, navigate the top bar menu as follows: <div class="code">File > New > From Cookiecutter...</div> 
+        <br><br>
+        You should see a window pop out of the left side of Visual Studio, appropriately titled <b>'Cookiecutter'</b>. This window allows you to search for specific project templates for Visual Studio. In the search bar, type <b>'rimworld'</b> and press enter. There should be one result labeled <b>'n-fisher/cookiecutter-rimworld-mod-development'</b> under the <b>'GitHub'</b> section in the search results. Double click that result. 
+        <br><br>
+        If Visual Studio seems to crash, that's fine. Just reopen it and try again. This time, though, the rimworld template should show up under the <b>'Installed'</b> templates section of the search before you type anything in. If you double click it this time, you should see a form like the one pictured below.<br><br>
+        <div class="fxhz">
+            <div><img src="../../resources/images/template.png" alt="Project Template Options"></div>
+        </div><br>
+
+        <b>Create To</b><br>
+        This field specifies the folder that your project will be created in. I recommend that you create a new folder in your Rimworld mods folder <b>(e.g. C:/.../steamapps/common/Rimworld/Mods/YourMod)</b> because that way the mod will be available for testing immediately without you having to move any files. <br><br>
+        <b>Mod name</b><br>
+        This is the name of your mod. It will be displayed in-game as you type it in here. <br><br>
+        <b>Author</b><br>
+        This is you. The template recommends that you use your Steam username because it will generate a link to the workshop page of the Steam user with the name you specify here. You can always change or remove the link manually later. <br><br>
+        <b>Mod Description</b><br>
+        This is a description of your mod. You can write as much or as little here as you want, and you can always change it later (it might also be easier in a text editor). <br><br>
+        <b>Create blank XML definition files</b><br>
+        As far as I know, this option (if you change it to 'y') will create some empty XML def files in certain directories within the project hierarchy.
+
+        <br><br>
+        When you're done with the template, just click <b>'Create and Open Folder'</b> to create the project. You should see a file structure similar to the one pictured below appear on the right in the <b>Solution Explorer</b>. <br><br>
+
+        <div class="fxhz">
+            <div><img src="../../resources/images/folder-structure.png" alt="Basic Project Folder Structure"></div>
+        </div><br>
+    </div><br>
+
+    <div class="box">
+        <div class="bold subt">Finalizing the Setup</div>
+    </div>
+    <div class="tx ibox">
+        At this point, the project setup is just about done. There are just a couple of things that are worth doing to make sure everything is configured correctly. <br><br>
+
+        First, double click the <b>.sln</b> file in the solution explorer on the right. It should have the same name as your mod. This will change the layout of the solution explorer, but that's fine. You can always switch back to the file view with the button pictured below. <br><br>
+
+        <div class="fxhz">
+            <div><img src="../../resources/images/change-view.png" alt="Change Solution Explorer View Button"></div>
+        </div><br>
+
+        Next, open the C# file (.cs) with the same name as your mod. This is the main entry point for your mod code. In order to make sure that the project dependencies are set up correctly, add <div class="code">using Rimworld;</div> to the top of the file below any other <div class="code">using</div> statements. If Rimworld is not underlined in red, you're done.
+    </div><br>
+</body>
