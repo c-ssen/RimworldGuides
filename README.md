@@ -1,6 +1,6 @@
 # RimworldModdingGuides
 
-#Installation
+# Installation
 
 1. Download this repository code as a ZIP archive (green code button)
 2. Extract the ZIP archive
