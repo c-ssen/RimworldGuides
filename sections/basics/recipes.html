@@ -25,7 +25,7 @@
         <a id="internal-recipes"><div class="bold subt">Internal Specification</div></a>
     </div>
     <div class="tx ibox">
-        This section refers to crafting recipes that are defined within the ThingDef that they create. Most vanilla weapons and apparel define their crafting recipes internally, and do so using the <div class="code">&lt;recipeMaker&gt;</div> XML node.
+        This section refers to crafting recipes that are defined within the ThingDef that they create. Most vanilla weapons and apparel define their crafting recipes internally, and do so using the <div class="code">&lt;recipeMaker&gt;</div> and <div class="code">&lt;costList&gt;</div> XML nodes.
         <br><br>
         The following XML snippet is an example recipeMaker that is used to define the crafting recipe for an armor item.
         <br><br>
@@ -56,6 +56,22 @@
         <b>&lt;skillRequirements&gt;</b> defines the skills needed to craft this ThingDef.
         <br><br>
         <b>&lt;recipeUsers&gt;</b> defines which production buildings will contain the bill for crafting this ThingDef. The <b>Inherit</b> property of this node presumably ensures that the recipe will be limited exactly to the production buildings you specify here. Note also that this XML node is used by the below two methods.
+        <br><br>
+        Below is the costList for the same ThingDef. You can add <em>any</em> ThingDef as a requirement for the recipe with its <b>defName</b> as shown.
+        <br><br>
+
+        <div class="code-block">
+            &lt;ThingDef&gt; <br>
+            &nbsp;... <br>
+            &nbsp;&lt;costList&gt; <br>
+			&nbsp;&nbsp;&lt;ComponentSpacer&gt;10&lt;/ComponentSpacer&gt; <br>
+			&nbsp;&nbsp;&lt;Plasteel&gt;50&lt;/Plasteel&gt; <br>
+			&nbsp;&nbsp;&lt;Uranium&gt;10&lt;/Uranium&gt; <br>
+			&nbsp;&nbsp;&lt;Apparel_ArmorCataphract&gt;1&lt;/Apparel_ArmorCataphract&gt; <br>
+		    &nbsp;&lt;/costList&gt; <br>
+            &nbsp;... <br>
+            &lt;/ThingDef&gt;
+        </div>
         
     </div><br><br>
 
